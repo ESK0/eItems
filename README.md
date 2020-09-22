@@ -1,3 +1,3 @@
 <p align="center">
-  <img src="https://fdl.sourcefactory.eu/eItems.gif" />
+  <img src="https://github.com/ESK0/eItems/blob/master/img/eItems.gif"/>
 </p>
