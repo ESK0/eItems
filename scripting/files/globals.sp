@@ -187,7 +187,7 @@ int g_iCratesCount = 0;
 bool g_bItemsSynced = false;
 bool g_bItemsSyncing = false;
 bool g_bIsRoundEnd = false;
-
+bool g_bUseLocal = false;
 
 bool g_bIsStickerInSet[200][8000];
 

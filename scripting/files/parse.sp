@@ -9,8 +9,25 @@ public void ParseItems()
     char szFileToDownload[128];
     Format(szFileToDownload, sizeof szFileToDownload, "items_%s.json", g_szLanguageCode);
 
-    PrintToServer("%s Downloading eItems data from GitHub", TAG_NCLR);
+    if (g_bUseLocal)
+    {
+        PrintToServer("%s Using local file as a source. Language: '%s'", TAG_NCLR, g_szLanguageCode);
 
+        char szLocalFilePath[PLATFORM_MAX_PATH];
+        BuildPath(Path_SM, szLocalFilePath, sizeof szLocalFilePath, "data/%s", szFileToDownload);
+
+        if (!FileExists(szLocalFilePath))
+        {
+            SetFailState("%s Unable to find: %s", TAG_NCLR, szLocalFilePath);
+            return;
+        }
+
+        JSONObject jData = JSONObject.FromFile(szLocalFilePath);
+        ParseData(view_as<JSON>(jData));
+        return;
+    }
+
+    PrintToServer("%s Downloading eItems data from GitHub", TAG_NCLR);
 
     char szURL[512];
     Format(szURL, sizeof(szURL), "https://raw.githubusercontent.com/ESK0/eItems/main/data//%s", szFileToDownload);

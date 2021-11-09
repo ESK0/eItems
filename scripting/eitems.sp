@@ -10,7 +10,7 @@
 
 #define TAG_NCLR "[eItems]"
 #define AUTHOR "ESK0"
-#define VERSION "0.19.0"
+#define VERSION "0.19.1"
 
 #include "files/globals.sp"
 #include "files/client.sp"
@@ -79,7 +79,7 @@ public void OnPluginStart()
 
     CheckHibernation();
 
-    BuildPath(Path_SM, g_szConfigFilePath, sizeof(g_szConfigFilePath), "configs/eItems.cfg");
+    BuildPath(Path_SM, g_szConfigFilePath, sizeof g_szConfigFilePath, "configs/eItems.json");
 
     LoadConfig();
     ParseItems();
