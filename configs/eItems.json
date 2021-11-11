@@ -1,4 +1,5 @@
 {
     "Language": "en",
-    "UseLocal": false
+    "UseLocal": false,
+    "ForceDisableHibernation": false
 }

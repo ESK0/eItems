@@ -10,7 +10,7 @@
 
 #define TAG_NCLR "[eItems]"
 #define AUTHOR "ESK0"
-#define VERSION "0.19.1"
+#define VERSION "0.19.2"
 
 #include "files/globals.sp"
 #include "files/client.sp"
@@ -205,6 +205,11 @@ public Action OnNormalSoundPlayed(int clients[64], int &iNumClients, char szSamp
 
 stock void CheckHibernation(bool bToDefault = false)
 {
+    if (!g_bForceDisableHibernation)
+    {
+        return;
+    }
+
     if (g_iHibernateWhenEmpty == 0)
     {
         return;

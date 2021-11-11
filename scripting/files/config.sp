@@ -9,6 +9,7 @@ public void LoadConfig()
     JSONObject jRoot = JSONObject.FromFile(g_szConfigFilePath);
     jRoot.GetString("Language", g_szLanguageCode, sizeof g_szLanguageCode);    
     g_bUseLocal = jRoot.GetBool("UseLocal");
+    g_bForceDisableHibernation = jRoot.GetBool("ForceDisableHibernation");
     
     delete jRoot;
 }
