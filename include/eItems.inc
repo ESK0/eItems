@@ -343,8 +343,8 @@ native bool     eItems_GetCrateWorldModelByDefIndex(int iDefIndex, char[] szBuff
 native bool     eItems_GetCrateWorldModelByCrateNum(int iCrateNum, char[] szBuffer, int iLength);
 native int      eItems_GetCrateItemsCountByDefIndex(int iDefIndex);
 native int      eItems_GetCrateItemsCountByCrateNum(int iCrateNum);
-native bool     eItems_GetCrateItemByDefIndex(int iDefIndex, int CrateItemNum, any[] StructDefinition, int iLength)
-native bool     eItems_GetCrateItemByCrateNum(int iCrateNum, int CrateItemNum, any[] StructDefinition, int iLength)
+native bool     eItems_GetCrateItemByDefIndex(int iDefIndex, int CrateItemNum, any[] StructDefinition, int iLength);
+native bool     eItems_GetCrateItemByCrateNum(int iCrateNum, int CrateItemNum, any[] StructDefinition, int iLength);
 enum struct eItems_CrateItem
 {
     int WeaponDefIndex;
