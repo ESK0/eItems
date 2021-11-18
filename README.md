@@ -1,8 +1,35 @@
 ## **eItems**
 eItems is an API designed to provide extended information and functionality to the CSGO Item Economy.
-Requirements: [**REST in Pawn** - HTTP client for JSON REST APIs](https://forums.alliedmods.net/showthread.php?t=298024)
 
-**Natives**
+**Dependencies:**
+
+[**REST in Pawn** - HTTP client for JSON REST APIs](https://forums.alliedmods.net/showthread.php?t=298024) - ver. 1.3.0+
+
+**Instalation:**
+
+1. Upload configs and eitems.smx to your server
+2. Change language in eItems.json if needed.
+3. Upload selected language data file to your server (Only if UseLocal is set to true in config)
+4. Restart your server or load plugin manually 
+
+**Troubleshooting:**
+
+```
+[SM] Exception reported: Invalid JSON in line
+```
+- This happens mostly only for Windows users. Windows have an issue with HTTP/2 requests. Set `UseLocal` to true and upload selected language file (items_XX.json) to data folder.
+
+```
+Native "HTTPRequest.HTTPRequest" was not found
+```
+- Update Rest In Pawn to version 1.3.0 or newer.
+
+```
+eItems.smx (eItems): unexpected error 23 in AskPluginLoad callback
+```
+- Make sure you do not have multiple copies of eitems.smx in plugins folder.
+
+**Natives:**
 ```
 enum WearRemap
 {
