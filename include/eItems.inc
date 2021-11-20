@@ -327,6 +327,8 @@ native bool     eItems_GetAgentPlayerModelByDefIndex(int iDefIndex, char[] szBuf
 native bool     eItems_GetAgentPlayerModelByAgentNum(int iAgentNum, char[] szBuffer, int iLength);
 native int      eItems_GetAgentTeamByDefIndex(int iDefIndex);
 native int      eItems_GetAgentTeamByAgentNum(int iAgentNum);
+native bool     eItems_GetAgentVOPrefixByDefIndex(int iDefIndex, char[] szBuffer, int iLength); // szBuffer wil be blank if agent has no vo_prefix defined
+native bool     eItems_GetAgentVOPrefixByAgentNum(int iAgentNum, char[] szBuffer, int iLength); // szBuffer wil be blank if agent has no vo_prefix defined
 
 /*              Patches             */
 

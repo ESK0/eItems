@@ -216,6 +216,8 @@ public void CreateNatives()
     CreateNative("eItems_GetAgentPlayerModelByAgentNum", Native_GetAgentPlayerModelByAgentNum);
     CreateNative("eItems_GetAgentTeamByDefIndex", Native_GetAgentTeamByDefIndex);
     CreateNative("eItems_GetAgentTeamByAgentNum", Native_GetAgentTeamByAgentNum);
+    CreateNative("eItems_GetAgentVOPrefixByDefIndex", Native_GetAgentVOPrefixByDefIndex);
+    CreateNative("eItems_GetAgentVOPrefixByAgentNum", Native_GetAgentVOPrefixByAgentNum);
 
         /*              Patches            */  
 
@@ -2262,6 +2264,44 @@ public int Native_GetAgentTeamByAgentNum(Handle hPlugin, int iNumParams)
         return -1;
     }
     return GetAgentTeamByAgentNum(iAgentNum);
+}
+
+public int Native_GetAgentVOPrefixByDefIndex(Handle hPlugin, int iNumParams)
+{
+    int iDefIndex = GetNativeCell(1);
+
+    if(g_arAgentsNum.FindValue(iDefIndex) == -1)
+    {
+        return false;
+    }
+
+    char szVOPrefix[32];
+
+    if(!GetAgentVOPrefixByDefIndex(iDefIndex, szVOPrefix, sizeof(szVOPrefix)))
+    {
+       return false; 
+    }
+
+    return SetNativeString(2, szVOPrefix, GetNativeCell(3)) == SP_ERROR_NONE;
+}
+
+public int Native_GetAgentVOPrefixByAgentNum(Handle hPlugin, int iNumParams)
+{
+    int iAgentNum = GetNativeCell(1);
+
+    if(g_iAgentsCount < iAgentNum)
+    {
+        return -1;
+    }
+
+    char szVOPrefix[PLATFORM_MAX_PATH];
+
+    if(!GetAgentVOPrefixByAgentNum(iAgentNum, szVOPrefix, sizeof(szVOPrefix)))
+    {
+       return false; 
+    }
+
+    return SetNativeString(2, szVOPrefix, GetNativeCell(3)) == SP_ERROR_NONE;
 }
 
     /*      Patches      */

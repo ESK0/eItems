@@ -686,6 +686,7 @@ public void ParseAgents(JSONArray array)
     char szDisplayName[64];
     char szPlayerModel[PLATFORM_MAX_PATH];
     char szAgentDefIndex[12];
+    char szVOPrefix[32];
 
     for(int iAgentNum = 0; iAgentNum < array.Length; iAgentNum++)
     {
@@ -695,6 +696,15 @@ public void ParseAgents(JSONArray array)
         g_arAgentsNum.Push(iDefIndex);
         jItem.GetString("item_name", szDisplayName, sizeof(szDisplayName));
         jItem.GetString("player_model", szPlayerModel, sizeof(szPlayerModel));
+
+        if (jItem.HasKey("vo_prefix"))
+        {
+            jItem.GetString("vo_prefix", szVOPrefix, sizeof(szVOPrefix));
+        }
+        else
+        {
+            szVOPrefix = "";
+        }
 
         IntToString(iDefIndex, szAgentDefIndex, sizeof(szAgentDefIndex));
 

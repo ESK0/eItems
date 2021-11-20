@@ -2987,6 +2987,32 @@ public int GetAgentTeamByAgentNum(int iAgentNum)
     return AgentInfo.Team;
 }
 
+public bool GetAgentVOPrefixByDefIndex(int iDefIndex, char[] szVOPrefix, int iLen)
+{
+    char szDefIndex[12];
+    IntToString(iDefIndex, szDefIndex, sizeof(szDefIndex));
+
+    eAgentInfo AgentInfo;
+    g_smAgentsInfo.GetArray(szDefIndex, AgentInfo, sizeof(eAgentInfo));
+
+    strcopy(szVOPrefix, iLen, AgentInfo.VOPrefix);
+    return true;
+}
+
+public bool GetAgentVOPrefixByAgentNum(int iAgentNum, char[] szVOPrefix, int iLen)
+{
+    int iDefIndex = GetAgentDefIndexByAgentNum(iAgentNum);
+
+    char szDefIndex[12];
+    IntToString(iDefIndex, szDefIndex, sizeof(szDefIndex));
+
+    eAgentInfo AgentInfo;
+    g_smAgentsInfo.GetArray(szDefIndex, AgentInfo, sizeof(eAgentInfo));
+
+    strcopy(szVOPrefix, iLen, AgentInfo.VOPrefix);
+    return true;
+}
+
     /*      Patches      */
 
 public int GetPatchNumByDefIndex(int iDefIndex)
