@@ -3,15 +3,15 @@ eItems is an API designed to provide extended information and functionality to t
 
 **Dependencies:**
 
-[**REST in Pawn** - HTTP client for JSON REST APIs](https://forums.alliedmods.net/showthread.php?t=298024) - ver. 1.3.0+
+- [**REST in Pawn** - HTTP client for JSON REST APIs](https://forums.alliedmods.net/showthread.php?t=298024) - ver. 1.3.0+
 
 **Instalation:**
 
-1. Upload configs and eitems.smx to your server
+1. Upload configs and eitems.smx to your server.
 2. Change language in eItems.json if needed.
-3. Upload selected language data file to your server (Only if UseLocal is set to true in config)
-4. Restart your server or load plugin manually
-5. Upload Graffiti files to server + fastdl (Only if DownloadSprays is set to true in config, skip otherwise)
+3. Upload selected language data file to your server. ***(Only if UseLocal is set to true in config)***
+4. Restart your server or load plugin manually.
+5. Upload Graffiti files to server + fastdl. ***(Only if DownloadSprays is set to true in config, skip otherwise)***
 
 **Troubleshooting:**
 
@@ -219,7 +219,6 @@ native int      eItems_GetSkinRarityName(int iDefIndex, char[] szBuffer, int iLe
 native float    eItems_GetSkinWearRemapByDefIndex(int iDefIndex, WearRemap remap);
 native float    eItems_GetSkinWearRemapBySkinNum(int iSkinNum, WearRemap remap);
 
-
 /*              Gloves             */
 
 native int      eItems_GetGlovesNumByDefIndex(int iDefIndex);
@@ -232,7 +231,6 @@ native bool     eItems_GetGlovesViewModelByDefIndex(int iDefIndex, char[] szBuff
 native bool     eItems_GetGlovesWorldModelByGlovesNum(int iGlovesNum, char[] szBuffer, int iLength);
 native bool     eItems_GetGlovesWorldModelByDefIndex(int iDefIndex, char[] szBuffer, int iLength);
 native int      eItems_GetGlovesNumBySkinNum(int iSkinNum);
-
 
 /*              MusicKits             */
 
@@ -289,7 +287,6 @@ native int      eItems_GetAgentTeamByAgentNum(int iAgentNum);
 native bool     eItems_GetAgentVOPrefixByDefIndex(int iDefIndex, char[] szBuffer, int iLength); // szBuffer wil be blank if agent has no vo_prefix defined
 native bool     eItems_GetAgentVOPrefixByAgentNum(int iAgentNum, char[] szBuffer, int iLength); // szBuffer wil be blank if agent has no vo_prefix defined
 
-
 /*              Patches             */
 
 native int      eItems_GetPatchNumByDefIndex(int iDefIndex);
@@ -307,8 +304,9 @@ native bool     eItems_GetCrateWorldModelByDefIndex(int iDefIndex, char[] szBuff
 native bool     eItems_GetCrateWorldModelByCrateNum(int iCrateNum, char[] szBuffer, int iLength);
 native int      eItems_GetCrateItemsCountByDefIndex(int iDefIndex);
 native int      eItems_GetCrateItemsCountByCrateNum(int iCrateNum);
-native bool     eItems_GetCrateItemByDefIndex(int iDefIndex, int CrateItemNum, any[] StructDefinition, int iLength)
-native bool     eItems_GetCrateItemByCrateNum(int iCrateNum, int CrateItemNum, any[] StructDefinition, int iLength)
+native bool     eItems_GetCrateItemByDefIndex(int iDefIndex, int CrateItemNum, any[] StructDefinition, int iLength);
+native bool     eItems_GetCrateItemByCrateNum(int iCrateNum, int CrateItemNum, any[] StructDefinition, int iLength);
+
 enum struct eItems_CrateItem
 {
     int WeaponDefIndex;
