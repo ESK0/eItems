@@ -10,7 +10,7 @@
 
 #define TAG_NCLR "[eItems]"
 #define AUTHOR "ESK0"
-#define VERSION "0.19.2"
+#define VERSION "0.20.0"
 
 #include "files/globals.sp"
 #include "files/client.sp"
@@ -26,6 +26,15 @@ public Plugin myinfo =
     author = AUTHOR,
     version = VERSION
 };
+
+public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max)
+{
+    RegPluginLibrary("eItems");
+
+    CreateNatives();
+    CreateForwards();
+    return APLRes_Success;
+}
 
 public void OnPluginStart()
 {
@@ -64,15 +73,23 @@ public void OnPluginStart()
     g_smStickersSets        = new StringMap();
     g_smStickersInfo        = new StringMap();
 
-    // AgentsiWeapon
+    // Agents
     g_arAgentsNum           = new ArrayList();
     g_smAgentsInfo          = new StringMap();
 
+    // Patches
     g_arPatchesNum          = new ArrayList();
     g_smPatchesInfo         = new StringMap();
 
+    // Crates
     g_arCratesNum           = new ArrayList();
     g_smCratesInfo          = new StringMap();
+
+    // Sprays
+    g_arSpraysSetsNum       = new ArrayList();
+    g_arSpraysNum           = new ArrayList();
+    g_smSpraysSets          = new StringMap();
+    g_smSpraysInfo          = new StringMap();
     
     g_cvHibernationWhenEmpty    = FindConVar("sv_hibernate_when_empty");
     g_iHibernateWhenEmpty       = g_cvHibernationWhenEmpty.IntValue;
@@ -149,15 +166,48 @@ public void OnPluginEnd()
     }
     delete g_arCratesNum;
     delete g_smCratesInfo;
+
+    delete g_arSpraysSetsNum;
+    delete g_arSpraysNum;
+    delete g_smSpraysSets;
+    delete g_smSpraysInfo;
 }
 
-public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max)
+public void OnMapStart()
 {
-    RegPluginLibrary("eItems");
+    if (g_iSpraysCount < 1)
+    {
+        return;
+    }
 
-    CreateNatives();
-    CreateForwards();
-    return APLRes_Success;
+    AddSpraysToDownloadsTable();
+}
+
+public void AddSpraysToDownloadsTable()
+{
+    if (!g_bDownloadSprays)
+    {
+        return;
+    }
+
+    for(int iSprayNum = 0; iSprayNum < g_iSpraysCount; iSprayNum++)
+    {
+        char szMaterialPath[PLATFORM_MAX_PATH];
+        char szMaterialDownloadPath[PLATFORM_MAX_PATH];
+        GetSprayMaterialPathBySprayNum(iSprayNum, szMaterialPath, sizeof(szMaterialPath));
+
+        Format(szMaterialDownloadPath, sizeof(szMaterialDownloadPath), "materials/%s.vmt", szMaterialPath);
+        if (FileExists(szMaterialDownloadPath))
+        {
+            AddFileToDownloadsTable(szMaterialDownloadPath);
+        }
+
+        Format(szMaterialDownloadPath, sizeof(szMaterialDownloadPath), "materials/%s.vtf", szMaterialPath);
+        if (FileExists(szMaterialDownloadPath))
+        {
+            AddFileToDownloadsTable(szMaterialDownloadPath);
+        }
+    }
 }
 
 public Action Event_OnRoundStart(Handle hEvent, char[] szName, bool bDontBroadcast)

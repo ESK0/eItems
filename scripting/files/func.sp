@@ -58,6 +58,16 @@ public int GetCratesCount()
     return g_iCratesCount;
 }
 
+public int GetSpraysCount()
+{
+    return g_iSpraysCount;
+}
+
+public int GetSpraysSetsCount()
+{
+    return g_iSpraysSetsCount;
+}
+
 public bool AreItemsSynced()
 {
     return g_bItemsSynced;
@@ -3169,4 +3179,141 @@ public bool GetCrateItemByCrateNum(int iCrateNum, int iCrateItemNum, any[] iCrat
     g_smCratesInfo.GetArray(szDefIndex, CrateInfo, sizeof(eCrateInfo));
 
     return view_as<bool>(CrateInfo.Items.GetArray(iCrateItemNum, iCrateItem, iLength));
+}
+
+    /*      Sprays      */
+
+public int GetSpraySetIdBySpraySetNum(int iSpraySetNum)
+{
+    if(g_arSpraysSetsNum.Length < iSpraySetNum)
+    {
+        return -1;
+    }
+
+    return g_arSpraysSetsNum.Get(iSpraySetNum);
+}
+
+public int GetSpraySetNumBySpraySetId(int iSpraySetId)
+{
+    int iIndex = g_arSpraysSetsNum.FindValue(iSpraySetId);
+    if(iIndex == -1)
+    {
+        return -1;
+    }
+
+    return iIndex;
+}
+
+public bool GetSpraySetDisplayNameBySpraySetNum(int iSpraySetNum, char[] szDisplayName, int iLen)
+{
+    int iSpraySetId = GetSpraySetIdBySpraySetNum(iSpraySetNum);
+
+    char szSpraySetId[12];
+    IntToString(iSpraySetId, szSpraySetId, sizeof(szSpraySetId));
+
+    eSpraysSets SpraysSets;
+    g_smSpraysSets.GetArray(szSpraySetId, SpraysSets, sizeof(eSpraysSets));
+
+    strcopy(szDisplayName, iLen, SpraysSets.DisplayName);
+    return true;
+}
+
+public bool GetSpraySetDisplayNameBySpraySetId(int iSpraySetId, char[] szDisplayName, int iLen)
+{
+    char szSpraySetId[12];
+    IntToString(iSpraySetId, szSpraySetId, sizeof(szSpraySetId));
+
+    eSpraysSets SpraysSets;
+    g_smSpraysSets.GetArray(szSpraySetId, SpraysSets, sizeof(eSpraysSets));
+
+    strcopy(szDisplayName, iLen, SpraysSets.DisplayName);
+    return true;
+}
+
+public int GetSprayNumByDefIndex(int iDefIndex)
+{
+    int iIndex = g_arSpraysNum.FindValue(iDefIndex);
+    if(iIndex == -1)
+    {
+        return -1;
+    }
+
+    return iIndex;
+}
+
+public int GetSprayDefIndexBySprayNum(int iSprayNum)
+{
+    if(g_arSpraysNum.Length < iSprayNum)
+    {
+        return -1;
+    }
+
+    return g_arSpraysNum.Get(iSprayNum);
+}
+
+public bool GetSprayDisplayNameByDefIndex(int iDefIndex, char[] szDisplayName, int iLen)
+{
+    char szDefIndex[12];
+    IntToString(iDefIndex, szDefIndex, sizeof(szDefIndex));
+
+    eSprayInfo SprayInfo;
+    g_smSpraysInfo.GetArray(szDefIndex, SprayInfo, sizeof(eSprayInfo));
+
+    strcopy(szDisplayName, iLen, SprayInfo.DisplayName);
+    return true;
+}
+
+public bool GetSprayDisplayNameBySprayNum(int iSprayNum, char[] szDisplayName, int iLen)
+{
+    int iDefIndex = GetSprayDefIndexBySprayNum(iSprayNum);
+
+    char szDefIndex[12];
+    IntToString(iDefIndex, szDefIndex, sizeof(szDefIndex));
+
+    eSprayInfo SprayInfo;
+    g_smSpraysInfo.GetArray(szDefIndex, SprayInfo, sizeof(eSprayInfo));
+
+    strcopy(szDisplayName, iLen, SprayInfo.DisplayName);
+    return true;
+}
+
+public bool GetSprayMaterialPathByDefIndex(int iDefIndex, char[] szMaterialPath, int iLen)
+{
+    char szDefIndex[12];
+    IntToString(iDefIndex, szDefIndex, sizeof(szDefIndex));
+
+    eSprayInfo SprayInfo;
+    g_smSpraysInfo.GetArray(szDefIndex, SprayInfo, sizeof(eSprayInfo));
+
+    strcopy(szMaterialPath, iLen, SprayInfo.MaterialPath);
+    return true;
+}
+
+public bool GetSprayMaterialPathBySprayNum(int iSprayNum, char[] szMaterialPath, int iLen)
+{
+    int iDefIndex = GetSprayDefIndexBySprayNum(iSprayNum);
+
+    char szDefIndex[12];
+    IntToString(iDefIndex, szDefIndex, sizeof(szDefIndex));
+
+    eSprayInfo SprayInfo;
+    g_smSpraysInfo.GetArray(szDefIndex, SprayInfo, sizeof(eSprayInfo));
+
+    strcopy(szMaterialPath, iLen, SprayInfo.MaterialPath);
+    return true;
+}
+
+public bool IsSprayInSet(int iSpraySetNum, int iSprayNum)
+{
+    if(iSpraySetNum < 0 || iSpraySetNum > g_iSpraysSetsCount)
+    {
+        return false;
+    }
+
+    if(iSprayNum < 0 || iSprayNum > g_iSpraysCount)
+    {
+        return false;
+    }
+
+    return g_bIsSprayInSet[iSpraySetNum][iSprayNum];
 }

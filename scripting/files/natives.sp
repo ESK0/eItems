@@ -12,6 +12,8 @@ public void CreateNatives()
     CreateNative("eItems_GetAgentsCount", Native_GetAgentsCount);
     CreateNative("eItems_GetPatchesCount", Native_GetPatchesCount);
     CreateNative("eItems_GetCratesCount", Native_GetCratesCount);
+    CreateNative("eItems_GetSpraysCount", Native_GetSpraysCount);
+    CreateNative("eItems_GetSpraysSetsCount", Native_GetSpraysSetsCount);
 
 
     CreateNative("eItems_AreItemsSynced", Native_AreItemsSynced);
@@ -234,6 +236,22 @@ public void CreateNatives()
     CreateNative("eItems_GetCrateItemsCountByCrateNum", Native_GetCrateItemsCountByCrateNum);
     CreateNative("eItems_GetCrateItemByDefIndex", Native_GetCrateItemByDefIndex);
     CreateNative("eItems_GetCrateItemByCrateNum", Native_GetCrateItemByCrateNum);
+
+        /*              Sprays            */
+
+    CreateNative("eItems_GetSpraySetIdBySpraySetNum", Native_GetSpraySetIdBySpraySetNum);
+    CreateNative("eItems_GetSpraySetNumBySpraySetId", Native_GetSpraySetNumBySpraySetId);
+    CreateNative("eItems_GetSpraySetDisplayNameBySpraySetNum", Native_GetSpraySetDisplayNameBySpraySetNum);
+    CreateNative("eItems_GetSpraySetDisplayNameBySpraySetId", Native_GetSpraySetDisplayNameBySpraySetId);
+
+    CreateNative("eItems_GetSprayNumByDefIndex", Native_GetSprayNumByDefIndex);
+    CreateNative("eItems_GetSprayDefIndexBySprayNum", Native_GetSprayDefIndexBySprayNum);
+    CreateNative("eItems_GetSprayDisplayNameByDefIndex", Native_GetSprayDisplayNameByDefIndex);
+    CreateNative("eItems_GetSprayDisplayNameBySprayNum", Native_GetSprayDisplayNameBySprayNum);
+    CreateNative("eItems_GetSprayMaterialPathByDefIndex", Native_GetSprayMaterialPathByDefIndex);
+    CreateNative("eItems_GetSprayMaterialPathBySprayNum", Native_GetSprayMaterialPathBySprayNum);
+
+    CreateNative("eItems_IsSprayInSet", Native_IsSprayInSet);
 }
 
 
@@ -296,6 +314,17 @@ public int Native_GetCratesCount(Handle plugin, int numParams)
 {
     return GetCratesCount();
 }
+
+public int Native_GetSpraysCount(Handle plugin, int numParams)
+{
+    return GetSpraysCount();
+}
+
+public int Native_GetSpraysSetsCount(Handle plugin, int numParams)
+{
+    return GetSpraysSetsCount();
+}
+
 
 public int Native_AreItemsSynced(Handle plugin, int numParams)
 {
@@ -2456,4 +2485,178 @@ public int Native_GetCrateItemByCrateNum(Handle hPlugin, int iNumParams)
     }
 
     return SetNativeArray(3, CrateItem, GetNativeCell(4)) == SP_ERROR_NONE;
+}
+
+    /*      Sprays      */
+
+public int Native_GetSpraySetIdBySpraySetNum(Handle hPlugin, int iNumParams)
+{
+    int iSpraySetNum = GetNativeCell(1);
+
+    if(g_iSpraysSetsCount < iSpraySetNum)
+    {
+        return -1;
+    }
+    return GetSpraySetIdBySpraySetNum(iSpraySetNum);
+}
+
+public int Native_GetSpraySetNumBySpraySetId(Handle hPlugin, int iNumParams)
+{
+    int iSpraySetId = GetNativeCell(1);
+
+    if(g_arSpraysSetsNum.FindValue(iSpraySetId) == -1)
+    {
+        return -1;
+    }
+    return GetSpraySetNumBySpraySetId(iSpraySetId);
+}
+
+public int Native_GetSpraySetDisplayNameBySpraySetNum(Handle hPlugin, int iNumParams)
+{
+    int iSpraySetNum = GetNativeCell(1);
+
+    if(g_iSpraysSetsCount < iSpraySetNum)
+    {
+        return -1;
+    }
+
+    char szDisplayName[64];
+
+    if(!GetSpraySetDisplayNameBySpraySetNum(iSpraySetNum, szDisplayName, sizeof(szDisplayName)))
+    {
+       return false; 
+    }
+
+    return SetNativeString(2, szDisplayName, GetNativeCell(3)) == SP_ERROR_NONE;
+}
+
+public int Native_GetSpraySetDisplayNameBySpraySetId(Handle hPlugin, int iNumParams)
+{
+    int iSpraySetId = GetNativeCell(1);
+
+    if(g_arSpraysSetsNum.FindValue(iSpraySetId) == -1)
+    {
+        return false;
+    }
+
+    char szDisplayName[64];
+
+    if(!GetSpraySetDisplayNameBySpraySetId(iSpraySetId, szDisplayName, sizeof(szDisplayName)))
+    {
+       return false; 
+    }
+
+    return SetNativeString(2, szDisplayName, GetNativeCell(3)) == SP_ERROR_NONE;
+}
+
+public int Native_GetSprayNumByDefIndex(Handle hPlugin, int iNumParams)
+{
+    int iDefIndex = GetNativeCell(1);
+
+    if(g_arSpraysNum.FindValue(iDefIndex) == -1)
+    {
+        return -1;
+    }
+    return GetSprayNumByDefIndex(iDefIndex);
+}
+
+public int Native_GetSprayDefIndexBySprayNum(Handle hPlugin, int iNumParams)
+{
+    int iSprayNum = GetNativeCell(1);
+
+    if(g_iSpraysCount < iSprayNum)
+    {
+        return -1;
+    }
+    return GetSprayDefIndexBySprayNum(iSprayNum);
+}
+
+public int Native_GetSprayDisplayNameByDefIndex(Handle hPlugin, int iNumParams)
+{
+    int iDefIndex = GetNativeCell(1);
+
+    if(g_arSpraysNum.FindValue(iDefIndex) == -1)
+    {
+        return false;
+    }
+
+    char szDisplayName[64];
+
+    if(!GetSprayDisplayNameByDefIndex(iDefIndex, szDisplayName, sizeof(szDisplayName)))
+    {
+       return false; 
+    }
+
+    return SetNativeString(2, szDisplayName, GetNativeCell(3)) == SP_ERROR_NONE;
+}
+
+public int Native_GetSprayDisplayNameBySprayNum(Handle hPlugin, int iNumParams)
+{
+    int iSprayNum = GetNativeCell(1);
+
+    if(g_iSpraysCount < iSprayNum)
+    {
+        return -1;
+    }
+
+    char szDisplayName[64];
+
+    if(!GetSprayDisplayNameBySprayNum(iSprayNum, szDisplayName, sizeof(szDisplayName)))
+    {
+       return false; 
+    }
+
+    return SetNativeString(2, szDisplayName, GetNativeCell(3)) == SP_ERROR_NONE;
+}
+
+public int Native_GetSprayMaterialPathByDefIndex(Handle hPlugin, int iNumParams)
+{
+    int iDefIndex = GetNativeCell(1);
+
+    if(g_arSpraysNum.FindValue(iDefIndex) == -1)
+    {
+        return false;
+    }
+
+    char szMaterialPath[PLATFORM_MAX_PATH];
+
+    if(!GetSprayMaterialPathByDefIndex(iDefIndex, szMaterialPath, sizeof(szMaterialPath)))
+    {
+       return false; 
+    }
+
+    return SetNativeString(2, szMaterialPath, GetNativeCell(3)) == SP_ERROR_NONE;
+}
+
+public int Native_GetSprayMaterialPathBySprayNum(Handle hPlugin, int iNumParams)
+{
+    int iSprayNum = GetNativeCell(1);
+
+    if(g_iSpraysCount < iSprayNum)
+    {
+        return -1;
+    }
+
+    char szMaterialPath[PLATFORM_MAX_PATH];
+
+    if(!GetSprayMaterialPathBySprayNum(iSprayNum, szMaterialPath, sizeof(szMaterialPath)))
+    {
+       return false; 
+    }
+
+    return SetNativeString(2, szMaterialPath, GetNativeCell(3)) == SP_ERROR_NONE;
+}
+
+public int Native_IsSprayInSet(Handle hPlugin, int iNumParams)
+{
+    int iSpraySetNum = GetNativeCell(1);
+    int iSprayNum = GetNativeCell(2);
+    
+
+    if(iSprayNum < 0 || iSpraySetNum < 0)
+    {
+        return false;
+    }
+    
+    return IsSprayInSet(iSpraySetNum, iSprayNum);
 }

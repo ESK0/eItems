@@ -91,6 +91,8 @@ native int      eItems_GetStickersSetsCount();
 native int      eItems_GetAgentsCount();
 native int      eItems_GetPatchesCount();
 native int      eItems_GetCratesCount();
+native int      eItems_GetSpraysCount();
+native int      eItems_GetSpraysSetsCount();
 
 native bool     eItems_AreItemsSynced();
 native bool     eItems_AreItemsSyncing();
@@ -350,3 +352,19 @@ enum struct eItems_CrateItem
     int WeaponDefIndex;
     int SkinDefIndex;
 }
+
+/*              Sprays             */
+
+native int      eItems_GetSpraySetIdBySpraySetNum(int iSpraySetNum);
+native int      eItems_GetSpraySetNumBySpraySetId(int iSpraySetId);
+native bool     eItems_GetSpraySetDisplayNameBySpraySetId(int iSpraySetId, char[] szBuffer, int iLength);
+native bool     eItems_GetSpraySetDisplayNameBySpraySetNum(int iSpraySetNum, char[] szBuffer, int iLength);
+
+native int      eItems_GetSprayNumByDefIndex(int iDefIndex);
+native int      eItems_GetSprayDefIndexBySprayNum(int iSprayNum);
+native bool     eItems_GetSprayDisplayNameByDefIndex(int iDefIndex, char[] szBuffer, int iLength);
+native bool     eItems_GetSprayDisplayNameBySprayNum(int iSprayNum, char[] szBuffer, int iLength);
+native bool     eItems_GetSprayMaterialPathByDefIndex(int iDefIndex, char[] szBuffer, int iLength);
+native bool     eItems_GetSprayMaterialPathBySprayNum(int iSprayNum, char[] szBuffer, int iLength);
+
+native bool     eItems_IsStickerInSet(int iSpraySetNum, int iStickerNum);

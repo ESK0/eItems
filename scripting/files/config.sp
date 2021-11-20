@@ -10,6 +10,6 @@ public void LoadConfig()
     jRoot.GetString("Language", g_szLanguageCode, sizeof g_szLanguageCode);    
     g_bUseLocal = jRoot.GetBool("UseLocal");
     g_bForceDisableHibernation = jRoot.GetBool("ForceDisableHibernation");
-    
+    g_bDownloadSprays = jRoot.GetBool("DownloadSprays");
     delete jRoot;
 }

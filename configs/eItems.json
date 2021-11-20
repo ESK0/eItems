@@ -1,5 +1,6 @@
 {
     "Language": "en",
     "UseLocal": false,
-    "ForceDisableHibernation": false
+    "ForceDisableHibernation": false,
+    "DownloadSprays": false
 }

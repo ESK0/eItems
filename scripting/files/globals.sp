@@ -96,6 +96,20 @@ enum struct eCrateItem
     int SkinDefIndex;
 }
 
+enum struct eSpraysSets
+{
+    int SpraySetNum;
+    char DisplayName[64];
+    ArrayList Sprays;
+}
+
+enum struct eSprayInfo
+{
+    int SprayNum;
+    char DisplayName[64];
+    char MaterialPath[PLATFORM_MAX_PATH];
+}
+
 enum struct eWeaponInfo
 {
     int WeaponNum;
@@ -169,6 +183,11 @@ StringMap g_smPatchesInfo = null;
 ArrayList g_arCratesNum = null;
 StringMap g_smCratesInfo = null;
 
+ArrayList g_arSpraysSetsNum = null;
+ArrayList g_arSpraysNum = null;
+StringMap g_smSpraysSets = null;
+StringMap g_smSpraysInfo = null;
+
 float g_fStart;
 
 int g_iWeaponCount = 0;
@@ -183,15 +202,19 @@ int g_iStickersCount = 0;
 int g_iAgentsCount = 0;
 int g_iPatchesCount = 0;
 int g_iCratesCount = 0;
+int g_iSpraysSetsCount = 0;
+int g_iSpraysCount = 0;
 
 bool g_bItemsSynced = false;
 bool g_bItemsSyncing = false;
 bool g_bIsRoundEnd = false;
 bool g_bUseLocal = false;
 bool g_bForceDisableHibernation = false;
+bool g_bDownloadSprays = false;
+
 
 bool g_bIsStickerInSet[200][8000];
-
+bool g_bIsSprayInSet[200][1000];
 
 Handle g_hSwitchWeaponCall = null;
 
