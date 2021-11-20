@@ -326,5 +326,5 @@ native bool     eItems_GetSprayDisplayNameBySprayNum(int iSprayNum, char[] szBuf
 native bool     eItems_GetSprayMaterialPathByDefIndex(int iDefIndex, char[] szBuffer, int iLength);
 native bool     eItems_GetSprayMaterialPathBySprayNum(int iSprayNum, char[] szBuffer, int iLength);
 
-native bool     eItems_IsStickerInSet(int iSpraySetNum, int iStickerNum);
+native bool     eItems_IsSprayInSet(int iSpraySetNum, int iSprayNum);
 ```
