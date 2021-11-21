@@ -686,7 +686,7 @@ public void ParseAgents(JSONArray array)
     char szDisplayName[64];
     char szPlayerModel[PLATFORM_MAX_PATH];
     char szAgentDefIndex[12];
-    char szVOPrefix[32];
+    char szVOPrefix[64];
 
     for(int iAgentNum = 0; iAgentNum < array.Length; iAgentNum++)
     {
@@ -714,6 +714,7 @@ public void ParseAgents(JSONArray array)
 
         strcopy(AgentInfo.DisplayName, sizeof(eAgentInfo::DisplayName), szDisplayName);
         strcopy(AgentInfo.PlayerModel, sizeof(eAgentInfo::PlayerModel), szPlayerModel);
+        strcopy(AgentInfo.VOPrefix, sizeof(eAgentInfo::VOPrefix), szVOPrefix);
 
         g_smAgentsInfo.SetArray(szAgentDefIndex, AgentInfo, sizeof(eAgentInfo));
 

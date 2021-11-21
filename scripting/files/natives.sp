@@ -2275,7 +2275,7 @@ public int Native_GetAgentVOPrefixByDefIndex(Handle hPlugin, int iNumParams)
         return false;
     }
 
-    char szVOPrefix[32];
+    char szVOPrefix[64];
 
     if(!GetAgentVOPrefixByDefIndex(iDefIndex, szVOPrefix, sizeof(szVOPrefix)))
     {
@@ -2294,7 +2294,7 @@ public int Native_GetAgentVOPrefixByAgentNum(Handle hPlugin, int iNumParams)
         return -1;
     }
 
-    char szVOPrefix[PLATFORM_MAX_PATH];
+    char szVOPrefix[64];
 
     if(!GetAgentVOPrefixByAgentNum(iAgentNum, szVOPrefix, sizeof(szVOPrefix)))
     {

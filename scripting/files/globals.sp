@@ -73,7 +73,7 @@ enum struct eAgentInfo
     int Team;
     char DisplayName[64];
     char PlayerModel[PLATFORM_MAX_PATH];
-    char VOPrefix[32];
+    char VOPrefix[64];
 }
 
 enum struct ePatchInfo
