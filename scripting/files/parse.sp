@@ -881,7 +881,7 @@ public void ParseSprays(JSONObject array)
 
             ArrayList arSprays = SpraysSets.Sprays;
             int iFound;
-            if((iFound = arSprays.FindValue(iID) != -1) >= 0)
+            if((iFound = arSprays.FindValue(iDefIndex) != -1) >= 0)
             {
                 g_bIsSprayInSet[x][iSprayNum] = view_as<bool>(iFound);
             }
