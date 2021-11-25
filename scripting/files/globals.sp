@@ -140,7 +140,7 @@ enum struct eClientInfo
 {
     bool GivingWeapon;
 
-    bool Reset()
+    void Reset()
     {
         this.GivingWeapon = false;
     }  

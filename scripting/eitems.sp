@@ -210,22 +210,20 @@ public void AddSpraysToDownloadsTable()
     }
 }
 
-public Action Event_OnRoundStart(Handle hEvent, char[] szName, bool bDontBroadcast)
+public void Event_OnRoundStart(Handle hEvent, char[] szName, bool bDontBroadcast)
 {
     g_bIsRoundEnd = false;
 }
-public Action Event_OnRoundEnd(Handle hEvent, char[] szName, bool bDontBroadcast) 
+public void Event_OnRoundEnd(Handle hEvent, char[] szName, bool bDontBroadcast) 
 {
     g_bIsRoundEnd = true;
 }
 
-public Action Event_PlayerDeath(Handle hEvent, const char[] szName, bool bDontBroadcast)
+public void Event_PlayerDeath(Handle hEvent, const char[] szName, bool bDontBroadcast)
 {
 	int client = GetClientOfUserId(GetEventInt(hEvent, "userid"));
 	
 	ClientInfo[client].GivingWeapon = false;
-	
-	return Plugin_Continue;
 }
 
 public void OnClientPutInServer(int client)
