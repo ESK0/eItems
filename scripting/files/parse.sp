@@ -41,7 +41,7 @@ public void ParseItems()
 public Action Timer_AttemptDownload(Handle timer)
 {
     ParseItems();
-    return Plugin_Continue
+    return Plugin_Continue;
 }
 public void ParseItemsDownloaded(HTTPResponse response, any value)
 {
@@ -161,7 +161,7 @@ public void ParseData(JSON json)
 public Action Timer_ParseFinished(Handle timer)
 {
     CheckHibernation(true);
-    return Plugin_Continue
+    return Plugin_Continue;
 }
 
 public void ParseWeapons(JSONArray array)
