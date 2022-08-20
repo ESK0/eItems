@@ -2534,6 +2534,41 @@ public bool GetGlovesWorldModelByDefIndex(int iDefIndex, char[] szWorldModel, in
     return true;
 }
 
+public bool GetGlovesPaintsByGlovesNum(int iGlovesNum, ArrayList &arPaints) {
+	
+	if (g_iGlovesCount < iGlovesNum) {
+		return false;
+	}
+	
+	int iDefIndex = GetGlovesDefIndexByGlovesNum(iGlovesNum);
+	
+	char szDefIndex[12];
+	IntToString(iDefIndex, szDefIndex, sizeof(szDefIndex));
+
+	eGlovesInfo GlovesInfo;
+	g_smGloveInfo.GetArray(szDefIndex, GlovesInfo, sizeof(eGlovesInfo));
+
+	arPaints = GlovesInfo.Paints;
+	return true;
+}
+
+public bool GetGlovesPaintsByDefIndex(int iDefIndex, ArrayList &arPaints) {
+	
+	if(g_arGlovesNum.FindValue(iDefIndex) == -1)
+    {
+        return false;
+    }
+
+	char szDefIndex[12];
+	IntToString(iDefIndex, szDefIndex, sizeof(szDefIndex));
+
+	eGlovesInfo GlovesInfo;
+	g_smGloveInfo.GetArray(szDefIndex, GlovesInfo, sizeof(eGlovesInfo));
+
+	arPaints = GlovesInfo.Paints;
+	return true;
+}
+
 public int GetGlovesNumBySkinNum(int iSkinNum)
 {
     if(g_iPaintsCount < iSkinNum)

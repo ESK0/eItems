@@ -162,6 +162,8 @@ public void CreateNatives()
     CreateNative("eItems_GetGlovesViewModelByDefIndex", Native_GetGlovesViewModelByDefIndex);
     CreateNative("eItems_GetGlovesWorldModelByGlovesNum", Native_GetGlovesWorldModelByGlovesNum);
     CreateNative("eItems_GetGlovesWorldModelByDefIndex", Native_GetGlovesWorldModelByDefIndex);
+    CreateNative("eItems_GetGlovesPaintsByGlovesNum", Native_GetGlovesPaintsByGlovesNum);
+    CreateNative("eItems_GetGlovesPaintsByDefIndex", Native_GetGlovesPaintsByDefIndex);
     CreateNative("eItems_GetGlovesNumBySkinNum", Native_GetGlovesNumBySkinNum);
     
     /*              Music Kits            */  
@@ -1735,6 +1737,43 @@ public int Native_GetGlovesWorldModelByDefIndex(Handle plugin, int numParams)
     }
 
     return SetNativeString(2, szWorldModel, GetNativeCell(3)) == SP_ERROR_NONE;
+}
+
+public int Native_GetGlovesPaintsByGlovesNum(Handle plugin, int numParams) {
+	int iGlovesNum = GetNativeCell(1);
+	
+	if(g_iGlovesCount < iGlovesNum)
+    {
+        return -1;
+    }
+	ArrayList arPaints;
+
+	if(!GetGlovesPaintsByGlovesNum(iGlovesNum, arPaints))
+    { 
+        return false;
+    }
+
+	SetNativeCellRef(2, arPaints);
+	return true;
+}
+
+public int Native_GetGlovesPaintsByDefIndex(Handle plugin, int numParams) {
+	
+	int iDefIndex = GetNativeCell(1);
+	if(g_arGlovesNum.FindValue(iDefIndex) == -1)
+	{
+		return false;
+	}
+    
+	ArrayList arPaints;
+
+	if(!GetGlovesPaintsByDefIndex(iDefIndex, arPaints))
+	{ 
+		return false;
+	}
+
+	SetNativeCellRef(2, arPaints);
+	return true;
 }
 
 public int Native_GetGlovesNumBySkinNum(Handle plugin, int numParams)
