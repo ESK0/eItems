@@ -230,6 +230,8 @@ native bool     eItems_GetGlovesViewModelByGlovesNum(int iGlovesNum, char[] szBu
 native bool     eItems_GetGlovesViewModelByDefIndex(int iDefIndex, char[] szBuffer, int iLength);
 native bool     eItems_GetGlovesWorldModelByGlovesNum(int iGlovesNum, char[] szBuffer, int iLength);
 native bool     eItems_GetGlovesWorldModelByDefIndex(int iDefIndex, char[] szBuffer, int iLength);
+native bool     eItems_GetGlovesPaintsByGlovesNum(int iGlovesNum, ArrayList &arPaints);
+native bool 	 eItems_GetGlovesPaintsByDefIndex(int iDefIndex, ArrayList &arPaints);
 native int      eItems_GetGlovesNumBySkinNum(int iSkinNum);
 
 /*              MusicKits             */
