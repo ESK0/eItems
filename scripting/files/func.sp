@@ -3343,3 +3343,49 @@ public bool IsSprayInSet(int iSpraySetNum, int iSprayNum)
 
     return g_bIsSprayInSet[iSpraySetNum][iSprayNum];
 }
+
+public bool GetPaintsByWeaponNum(int iWeaponNum, any[] iPaints, int iLength)
+{
+    if(g_arWeaponsNum.Length < iWeaponNum)
+    {
+        return false;
+    }
+
+    int iDefIndex = GetWeaponDefIndexByWeaponNum(iWeaponNum);
+
+    char szDefIndex[12];
+    IntToString(iDefIndex, szDefIndex, sizeof(szDefIndex));
+
+    eWeaponInfo WeaponInfo;
+    g_smWeaponsInfo.GetArray(szDefIndex, WeaponInfo, sizeof(eWeaponInfo));
+
+    return view_as<bool>(WeaponInfo.Paints.GetArray(0, iPaints, iLength));
+}
+
+public bool GetPaintsByWeaponDefIndex(int iDefIndex, any[] iPaints, int iLength)
+{
+    char szDefIndex[12];
+    IntToString(iDefIndex, szDefIndex, sizeof(szDefIndex));
+
+    eWeaponInfo WeaponInfo;
+    g_smWeaponsInfo.GetArray(szDefIndex, WeaponInfo, sizeof(eWeaponInfo));
+
+    return view_as<bool>(WeaponInfo.Paints.GetArray(0, iPaints, iLength));
+}
+
+public bool GetPaintsByWeaponName(char[] szWeaponName, any[] iPaints, int iLength)
+{
+    int iDefIndex = GetWeaponDefIndexByWeaponName(szWeaponName);
+    if(iDefIndex == -1)
+    {
+        return false;
+    }
+
+    char szDefIndex[12];
+    IntToString(iDefIndex, szDefIndex, sizeof(szDefIndex));
+
+    eWeaponInfo WeaponInfo;
+    g_smWeaponsInfo.GetArray(szDefIndex, WeaponInfo, sizeof(eWeaponInfo));
+
+    return view_as<bool>(WeaponInfo.Paints.GetArray(0, iPaints, iLength));
+}

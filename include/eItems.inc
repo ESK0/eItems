@@ -370,3 +370,14 @@ native bool     eItems_GetSprayMaterialPathByDefIndex(int iDefIndex, char[] szBu
 native bool     eItems_GetSprayMaterialPathBySprayNum(int iSprayNum, char[] szBuffer, int iLength);
 
 native bool     eItems_IsSprayInSet(int iSpraySetNum, int iSprayNum);
+
+/*              Other             */
+
+native bool    eItems_GetWeaponPaintsByWeaponNum(int iWeaponNum, any[] StructDefinition, int iLength);
+native bool    eItems_GetWeaponPaintsByWeaponDefIndex(int iWeaponDefIndex, any[] StructDefinition, int iLength);
+native bool    eItems_GetWeaponPaintsByWeaponName(char[] szWeaponName, any[] StructDefinition, int iLength);
+enum struct eItems_WeaponPaints
+{
+    int SkinNum;
+    char DisplayName[64];
+}

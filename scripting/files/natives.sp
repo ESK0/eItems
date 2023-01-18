@@ -20,7 +20,7 @@ public void CreateNatives()
     CreateNative("eItems_AreItemsSyncing", Native_AreItemsSyncing);
     CreateNative("eItems_ReSync", Native_ReSync);
     
-    
+
 
     /*              Weapons             */
 
@@ -254,7 +254,15 @@ public void CreateNatives()
     CreateNative("eItems_GetSprayMaterialPathBySprayNum", Native_GetSprayMaterialPathBySprayNum);
 
     CreateNative("eItems_IsSprayInSet", Native_IsSprayInSet);
+
+    /*              Other            */
+
+    CreateNative("eItems_GetWeaponPaintsByWeaponNum", Native_GetWeaponPaintsByWeaponNum);
+    CreateNative("eItems_GetWeaponPaintsByWeaponDefIndex", Native_GetWeaponPaintsByWeaponDefIndex);
+    CreateNatives("eItems_GetWeaponPaintsByWeaponName", Native_GetWeaponPaintsByWeaponName);
 }
+
+/*              Functions            */
 
 
 public int Native_GetWeaponCount(Handle plugin, int numParams)
@@ -2699,4 +2707,60 @@ public int Native_IsSprayInSet(Handle hPlugin, int iNumParams)
     }
     
     return IsSprayInSet(iSpraySetNum, iSprayNum);
+}
+
+public int Native_GetWeaponPaintsByWeaponNum(Handle hPlugin, int iNumParams)
+{
+    int iWeaponNum = GetNativeCell(1);
+
+    if(g_iWeaponsCount < iWeaponNum)
+    {
+        return false;
+    }
+
+    int iPaints[32];
+    int iPaintsCount = GetWeaponPaintsByWeaponNum(iWeaponNum, iPaints, sizeof(iPaints));
+
+    if(iPaintsCount == -1)
+    {
+        return false;
+    }
+
+    return SetNativeArray(2, iPaints, iPaintsCount) == SP_ERROR_NONE;
+}
+
+public int Native_GetWeaponPaintsByWeaponDefIndex(Handle hPlugin, int iNumParams)
+{
+    int iWeaponDefIndex = GetNativeCell(1);
+
+    if(g_arWeaponsNum.FindValue(iWeaponDefIndex) == -1)
+    {
+        return false;
+    }
+
+    int iPaints[32];
+    int iPaintsCount = GetWeaponPaintsByWeaponDefIndex(iWeaponDefIndex, iPaints, sizeof(iPaints));
+
+    if(iPaintsCount == -1)
+    {
+        return false;
+    }
+
+    return SetNativeArray(2, iPaints, iPaintsCount) == SP_ERROR_NONE;
+}
+
+public int Native_GetWeaponPaintsByWeaponName(Handle hPlugin, int iNumParams)
+{
+    char sWeaponName[PLATFORM_MAX_PATH];
+    GetNativeString(1, sWeaponName, sizeof(sWeaponName));
+
+    int iPaints[32];
+    int iPaintsCount = GetWeaponPaintsByWeaponName(sWeaponName, iPaints, sizeof(iPaints));
+
+    if(iPaintsCount == -1)
+    {
+        return false;
+    }
+
+    return SetNativeArray(2, iPaints, iPaintsCount) == SP_ERROR_NONE;
 }
