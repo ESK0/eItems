@@ -12,13 +12,13 @@
 #define AUTHOR "ESK0, modded by corrreia"
 #define VERSION "0.20.3"
 
-#include "eitems/globals.sp"
-#include "eitems/client.sp"
-#include "eitems/parse.sp"
-#include "eitems/natives.sp"
-#include "eitems/forwards.sp"
-#include "eitems/func.sp"
-#include "eitems/config.sp"
+#include "files/globals.sp"
+#include "files/client.sp"
+#include "files/parse.sp"
+#include "files/natives.sp"
+#include "files/forwards.sp"
+#include "files/func.sp"
+#include "files/config.sp"
 
 public Plugin myinfo =
 {
