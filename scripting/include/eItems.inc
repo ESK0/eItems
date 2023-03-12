@@ -108,9 +108,11 @@ forward void    eItems_OnWeaponGiven(const int client, const int iWeapon, const 
 native int      eItems_GetWeaponNumByDefIndex(int iDefIndex);
 native int      eItems_GetWeaponNumByClassName(const char[] szClassName);
 native int      eItems_GetWeaponNumByWeapon(int iWeapon);
+
 native int      eItems_GetWeaponDefIndexByWeaponNum(int iWeaponNum);
 native int      eItems_GetWeaponDefIndexByClassName(const char[] szClassName); 
 native int      eItems_GetWeaponDefIndexByWeapon(int iWeapon); 
+
 native bool     eItems_IsDefIndexKnife(int iDefIndex);
 native int      eItems_GetActiveWeaponNum(int client);
 native int      eItems_GetActiveWeaponDefIndex(int client);
@@ -370,3 +372,14 @@ native bool     eItems_GetSprayMaterialPathByDefIndex(int iDefIndex, char[] szBu
 native bool     eItems_GetSprayMaterialPathBySprayNum(int iSprayNum, char[] szBuffer, int iLength);
 
 native bool     eItems_IsSprayInSet(int iSpraySetNum, int iSprayNum);
+
+/*              Other             */
+
+//weapon skins
+native int    eItems_GetSkinsDefIndexArrByWeaponNum(int iWeaponNum, ArrayList &arSkins);
+native int    eItems_GetSkinsDefIndexArrByWeaponDefIndex(int iWeaponDefIndex, ArrayList &arSkins);
+native int    eItems_GetSkinsDefIndexArrByWeaponClassName(char[] szClassName, ArrayList &arSkins);
+
+//glove skins
+native int    eItems_GetSkinsDefIndexArrByGloveNum(int iGloveNum, ArrayList &arSkins);
+native int    eItems_GetSkinsDefIndexArrByGloveDefIndex(int iGloveDefIndex, ArrayList &arSkins);

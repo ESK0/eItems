@@ -3343,3 +3343,43 @@ public bool IsSprayInSet(int iSpraySetNum, int iSprayNum)
 
     return g_bIsSprayInSet[iSpraySetNum][iSprayNum];
 }
+
+public bool GetSkinsDefIndexArrByWeaponNum(int iWeaponNum, any &arSkinsDefIndex){
+    //convert to def index
+    int iWeaponDefIndex = GetWeaponDefIndexByWeaponNum(iWeaponNum);
+
+    //call GetSkinsDefIndexArrByWeaponDefIndex
+    return GetSkinsDefIndexArrByWeaponDefIndex(iWeaponDefIndex, arSkinsDefIndex);
+}
+
+public bool GetSkinsDefIndexArrByWeaponDefIndex(int iWeaponDefIndex, any &arSkinsDefIndex){
+    //convert iWeaponDefIndex to string and use it as key on g_smWeaponPaints
+    char szWeaponDefIndex[12];
+    IntToString(iWeaponDefIndex, szWeaponDefIndex, sizeof(szWeaponDefIndex));
+
+    return g_smWeaponPaints.GetValue(szWeaponDefIndex, arSkinsDefIndex);  //it gets the array of skins def index
+}
+
+public bool GetSkinsDefIndexArrByWeaponClassName(char[] szClassName, any &arSkinsDefIndex){
+    //convert to def index
+    int iWeaponDefIndex = GetWeaponDefIndexByClassName(szClassName);
+
+    //call GetSkinsDefIndexArrByWeaponDefIndex
+    return GetSkinsDefIndexArrByWeaponDefIndex(iWeaponDefIndex, arSkinsDefIndex);
+}
+
+public bool GetSkinsDefIndexArrByGloveNum(int iGloveNum, any &arSkinsDefIndex){
+    //convert to def index
+    int iGloveDefIndex = GetGlovesDefIndexByGlovesNum(iGloveNum);
+
+    //call GetSkinsDefIndexArrByGloveDefIndex
+    return GetSkinsDefIndexArrByGloveDefIndex(iGloveDefIndex, arSkinsDefIndex);
+}
+
+public bool GetSkinsDefIndexArrByGloveDefIndex(int iGloveDefIndex, any &arSkinsDefIndex){
+    //convert iGloveDefIndex to string and use it as key on g_smGlovePaints
+    char szGloveDefIndex[12];
+    IntToString(iGloveDefIndex, szGloveDefIndex, sizeof(szGloveDefIndex));
+
+    return g_smGlovePaints.GetValue(szGloveDefIndex, arSkinsDefIndex);  //it gets the array of skins def index
+}

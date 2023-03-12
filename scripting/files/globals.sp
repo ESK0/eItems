@@ -148,22 +148,22 @@ enum struct eClientInfo
 
 eClientInfo ClientInfo[MAXPLAYERS + 1];
 
-StringMap g_smSkinInfo = null;
-ArrayList g_arSkinsNum = null;
+StringMap g_smSkinInfo = null;          // SkinDefIndex:[SkinInfo]        (SkinDefIndex is a string, SkinInfo is a struct) ([]is always a arraylist)
+ArrayList g_arSkinsNum = null;          // position is SkinNum, value is SkinDefIndex
 
-StringMap g_smWeaponPaints = null;
-StringMap g_smWeaponInfo = null;
-ArrayList g_arWeaponsNum = null;
+StringMap g_smWeaponPaints = null;      // WeaponDefIndex:[PaintDefIndex]   (WeaponDefIndex is a string, PaintDefIndex is an int)
+StringMap g_smWeaponInfo = null;        // WeaponDefIndex:[WeaponInfo]    (WeaponDefIndex is a string, WeaponInfo is a struct)
+ArrayList g_arWeaponsNum = null;        // position is WeaponNum, value is WeaponDefIndex
 
-StringMap g_smGlovePaints = null;
-StringMap g_smGloveInfo = null;
-ArrayList g_arGlovesNum = null;
+StringMap g_smGlovePaints = null;       // GloveDefIndex:[PaintDefIndex]   (GloveDefIndex is a string, PaintDefIndex is an int)
+StringMap g_smGloveInfo = null;         // GloveDefIndex:[GloveInfo]    (GloveDefIndex is a string, GloveInfo is a struct)
+ArrayList g_arGlovesNum = null;         // position is GloveNum, value is GloveDefIndex
 
-ArrayList g_arMusicKitsNum = null;
-StringMap g_smMusicKitInfo = null;
+ArrayList g_arMusicKitsNum = null;      // position is MusicKitNum, value is MusicKitDefIndex
+StringMap g_smMusicKitInfo = null;      // MusicKitDefIndex:[MusicKitInfo]    (MusicKitDefIndex is a string, MusicKitInfo is a struct)
 
-ArrayList g_arPinsNum = null;
-StringMap g_smPinInfo = null;
+ArrayList g_arPinsNum = null;           // position is PinNum, value is PinDefIndex
+StringMap g_smPinInfo = null;           // PinDefIndex:[PinInfo]    (PinDefIndex is a string, PinInfo is a struct)
 
 ArrayList g_arCoinsSetsNum = null;
 ArrayList g_arCoinsNum = null;

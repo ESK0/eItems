@@ -20,7 +20,7 @@ public void CreateNatives()
     CreateNative("eItems_AreItemsSyncing", Native_AreItemsSyncing);
     CreateNative("eItems_ReSync", Native_ReSync);
     
-    
+
 
     /*              Weapons             */
 
@@ -28,10 +28,12 @@ public void CreateNatives()
     CreateNative("eItems_GetWeaponNumByDefIndex", Native_GetWeaponNumByDefIndex);
     CreateNative("eItems_GetWeaponNumByClassName", Native_GetWeaponNumByClassName);
     CreateNative("eItems_GetWeaponNumByWeapon", Native_GetWeaponNumByWeapon);
+
     CreateNative("eItems_GetWeaponDefIndexByWeaponNum", Native_GetWeaponDefIndexByWeaponNum);
     CreateNative("eItems_GetWeaponDefIndexByClassName", Native_GetWeaponDefIndexByClassName);
-    CreateNative("eItems_IsDefIndexKnife", Native_IsDefIndexKnife);
     CreateNative("eItems_GetWeaponDefIndexByWeapon", Native_GetWeaponDefIndexByWeapon);
+
+    CreateNative("eItems_IsDefIndexKnife", Native_IsDefIndexKnife);
     CreateNative("eItems_GetActiveWeaponNum", Native_GetActiveWeaponNum);
     CreateNative("eItems_GetActiveWeaponDefIndex", Native_GetActiveWeaponDefIndex);
     CreateNative("eItems_GetActiveWeapon", Native_GetActiveWeapon);
@@ -254,7 +256,18 @@ public void CreateNatives()
     CreateNative("eItems_GetSprayMaterialPathBySprayNum", Native_GetSprayMaterialPathBySprayNum);
 
     CreateNative("eItems_IsSprayInSet", Native_IsSprayInSet);
+
+    /*              Other            */
+
+    CreateNative("eItems_GetSkinsDefIndexArrByWeaponNum", Natives_GetSkinsDefIndexArrByWeaponNum);
+    CreateNative("eItems_GetSkinsDefIndexArrByWeaponDefIndex", Natives_GetSkinsDefIndexArrByWeaponDefIndex);
+    CreateNative("eItems_GetSkinsDefIndexArrByWeaponClassName", Natives_GetSkinsDefIndexArrByWeaponClassName);
+
+    CreateNative("eItems_GetSkinsDefIndexArrByGloveNum", Natives_GetSkinsDefIndexArrByGloveNum);
+    CreateNative("eItems_GetSkinsDefIndexArrByGloveDefIndex", Natives_GetSkinsDefIndexArrByGloveDefIndex);
 }
+
+/*              Functions            */
 
 
 public int Native_GetWeaponCount(Handle plugin, int numParams)
@@ -2699,4 +2712,75 @@ public int Native_IsSprayInSet(Handle hPlugin, int iNumParams)
     }
     
     return IsSprayInSet(iSpraySetNum, iSprayNum);
+}
+
+public int Natives_GetSkinsDefIndexArrByWeaponNum(Handle hPlugin, int iNumParams){
+    int iWeaponNum = GetNativeCell(1);
+
+    ArrayList arSkinsDefIndex = null;
+    
+    if(!GetSkinsDefIndexArrByWeaponNum(iWeaponNum, arSkinsDefIndex)){
+        return -1;
+    }
+
+    SetNativeCellRef(2, arSkinsDefIndex)
+
+    return 1;
+}
+
+public int Natives_GetSkinsDefIndexArrByWeaponDefIndex(Handle hPlugin, int iNumParams){
+    int iWeaponDefIndex = GetNativeCell(1);
+
+    ArrayList arSkinsDefIndex = null;
+    
+    if(!GetSkinsDefIndexArrByWeaponDefIndex(iWeaponDefIndex, arSkinsDefIndex)){
+        return -1;
+    }
+
+    SetNativeCellRef(2, arSkinsDefIndex);
+
+    return 1;
+}
+
+public int Natives_GetSkinsDefIndexArrByWeaponClassName(Handle hPlugin, int iNumParams){
+    char sWeaponClassName[PLATFORM_MAX_PATH];
+    GetNativeString(1, sWeaponClassName, sizeof(sWeaponClassName));
+
+    ArrayList arSkinsDefIndex = null;
+    
+    if(!GetSkinsDefIndexArrByWeaponClassName(sWeaponClassName, arSkinsDefIndex)){
+        return -1;
+    }
+
+    SetNativeCellRef(2, arSkinsDefIndex);
+
+    return 1;
+}
+
+public int Natives_GetSkinsDefIndexArrByGloveNum(Handle hPlugin, int iNumParams){
+    int iGloveNum = GetNativeCell(1);
+
+    ArrayList arSkinsDefIndex = null;
+    
+    if(!GetSkinsDefIndexArrByGloveNum(iGloveNum, arSkinsDefIndex)){
+        return -1;
+    }
+
+    SetNativeCellRef(2, arSkinsDefIndex);
+
+    return 1;
+}
+
+public int Natives_GetSkinsDefIndexArrByGloveDefIndex(Handle hPlugin, int iNumParams){
+    int iGloveDefIndex = GetNativeCell(1);
+
+    ArrayList arSkinsDefIndex = null;
+    
+    if(!GetSkinsDefIndexArrByGloveDefIndex(iGloveDefIndex, arSkinsDefIndex)){
+        return -1;
+    }
+
+    SetNativeCellRef(2, arSkinsDefIndex);
+
+    return 1;
 }
