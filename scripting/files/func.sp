@@ -167,7 +167,6 @@ public int FindWeaponByClassName(int client, const char[] szClassName)
 		return -1;
 	}
 
-
 	int iWantedDefIndex = GetWeaponDefIndexByClassName(szClassName);
 
 	if(g_arWeaponsNum.FindValue(iWantedDefIndex) == -1)

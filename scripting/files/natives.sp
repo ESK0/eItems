@@ -267,11 +267,13 @@ public void CreateNatives()
 	CreateNative("eItems_IsSprayInSet", Native_IsSprayInSet);
 
 	/*				Other			 */
-
+	
+	// Weapon Skins
 	CreateNative("eItems_GetSkinsDefIndexArrByWeaponNum", Natives_GetSkinsDefIndexArrByWeaponNum);
 	CreateNative("eItems_GetSkinsDefIndexArrByWeaponDefIndex", Natives_GetSkinsDefIndexArrByWeaponDefIndex);
 	CreateNative("eItems_GetSkinsDefIndexArrByWeaponClassName", Natives_GetSkinsDefIndexArrByWeaponClassName);
 
+	// Glove Skins
 	CreateNative("eItems_GetSkinsDefIndexArrByGloveNum", Natives_GetSkinsDefIndexArrByGloveNum);
 	CreateNative("eItems_GetSkinsDefIndexArrByGloveDefIndex", Natives_GetSkinsDefIndexArrByGloveDefIndex);
 }

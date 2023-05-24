@@ -6,7 +6,6 @@ public Action Timer_ParseItems(Handle timer)
 
 public void ParseItems()
 {
-
 	char szFileToDownload[128];
 	Format(szFileToDownload, sizeof szFileToDownload, "items_%s.json", g_szLanguageCode);
 
@@ -85,7 +84,7 @@ public void ParseData(JSON json)
 	JSONArray	jAgents			= view_as<JSONArray>(jRoot.Get("agents"));
 	JSONArray	jPatches		= view_as<JSONArray>(jRoot.Get("patches"));
 	JSONArray	jCrates			= view_as<JSONArray>(jRoot.Get("crates"));
-	JSONObject	 jSprays		 = view_as<JSONObject>(jRoot.Get("sprays"));
+	JSONObject	jSprays			= view_as<JSONObject>(jRoot.Get("sprays"));
 
 	/*				Paints parse			*/
 

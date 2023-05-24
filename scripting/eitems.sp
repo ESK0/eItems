@@ -7,7 +7,6 @@
 #pragma newdecls required
 #pragma semicolon 1
 
-
 #define TAG_NCLR "[eItems]"
 #define AUTHOR "ESK0, modded by corrreia"
 #define VERSION "0.20.3"
@@ -38,7 +37,6 @@ public APLRes AskPluginLoad2(Handle myself, bool late, char[] error, int err_max
 
 public void OnPluginStart()
 {
-
     //Skins
     g_smSkinInfo            = new StringMap();
     g_arSkinsNum            = new ArrayList();

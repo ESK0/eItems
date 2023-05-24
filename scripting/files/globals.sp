@@ -40,7 +40,6 @@ enum struct ePinInfo
 	char DisplayName[64];
 }
 
-
 enum struct eCoinsSets
 {
 	int CoinSetNum;
