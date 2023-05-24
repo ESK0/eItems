@@ -37,12 +37,12 @@ public void ParseItems()
 	httpRequest.Get(ParseItemsDownloaded);
 }
 
-
 public Action Timer_AttemptDownload(Handle timer)
 {
 	ParseItems();
 	return Plugin_Continue;
 }
+
 public void ParseItemsDownloaded(HTTPResponse response, any value)
 {
 	if (response.Status != HTTPStatus_OK)
@@ -87,50 +87,49 @@ public void ParseData(JSON json)
 	JSONArray	jCrates			= view_as<JSONArray>(jRoot.Get("crates"));
 	JSONObject	 jSprays		 = view_as<JSONObject>(jRoot.Get("sprays"));
 
-	/*				Paints parse				*/
+	/*				Paints parse			*/
 
 	ParsePaints(jPaints);
 
-	/*				Weapon parse				*/
+	/*				Weapon parse			*/
 
 	ParseWeapons(jWeapons);
 
-	/*			   Gloves parse				   */
+	/*			   Gloves parse				*/
 
 	ParseGloves(jGloves);
 
-	/*			 Music Kits parse				*/
+	/*			 Music Kits parse			*/
 
 	ParseMusicKits(jMusicKits);
 
-	/*				Pins parse					*/
+	/*				Pins parse				*/
 
 	ParsePins(jPins);
 
-	/*				Coins parse					 */
+	/*				Coins parse				 */
 
 	ParseCoins(jCoins);
 
-	/*				Stickers parse					*/
+	/*				Stickers parse			*/
 
 	ParseStickers(jStickers);
 
-	/*				Agents parse				  */
+	/*				Agents parse			*/
 
 	ParseAgents(jAgents);
 
-	/*				Patches parse				   */
+	/*				Patches parse			*/
 
 	ParsePatches(jPatches);
 
-	/*				Crates parse				  */
+	/*				Crates parse			*/
 
 	ParseCrates(jCrates);
 
-	/*			   Sprays parse					 */
+	/*			   Sprays parse				*/
 
 	ParseSprays(jSprays);
-
 
 	delete jRoot;
 	delete jWeapons;
@@ -305,9 +304,6 @@ public void ParseWeapons(JSONArray array)
 				fSpread = jAttributesObj.GetFloat("spread");
 			}
 
-
-
-
 			delete jAttributesObj;
 		}
 
@@ -349,7 +345,6 @@ public void ParseWeapons(JSONArray array)
 
 public void ParsePaints(JSONArray array)
 {
-
 	g_iPaintsCount = array.Length;
 	JSONObject jItem;
 	int iDefIndex = 0;
@@ -404,7 +399,6 @@ public void ParsePaints(JSONArray array)
 
 public void ParseGloves(JSONArray array)
 {
-
 	g_iGlovesCount = array.Length;
 	JSONObject jItem;
 
@@ -465,7 +459,6 @@ public void ParseGloves(JSONArray array)
 
 public void ParseMusicKits(JSONArray array)
 {
-
 	g_iMusicKitsCount = array.Length;
 	JSONObject jItem;
 
@@ -496,7 +489,6 @@ public void ParseMusicKits(JSONArray array)
 
 public void ParsePins(JSONArray array)
 {
-
 	g_iPinsCount = array.Length;
 	JSONObject jItem;
 
@@ -555,7 +547,6 @@ public void ParseCoins(JSONObject array)
 			int iCoinDefIndex = jItems.GetInt(szCoinIndex);
 			arCoins.Push(iCoinDefIndex);
 		}
-
 
 		g_arCoinsSetsNum.Push(iID);
 
@@ -623,7 +614,6 @@ public void ParseStickers(JSONObject array)
 			int iStickerDefIndex = jItems.GetInt(szStickerIndex);
 			arStickers.Push(iStickerDefIndex);
 		}
-
 
 		g_arStickersSetsNum.Push(iID);
 

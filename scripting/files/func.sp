@@ -1499,7 +1499,6 @@ public bool RefillReserveAmmo(int iWeapon)
 
 stock int GiveWeapon(int client, const char[] szClassName, int iReserveAmmo, int iClipAmmo, int iSwitchTo, bool bSwitchAnimation = true)
 {
-
 	if (!IsValidClient(client, true))
 	{
 		return -1;
@@ -1523,7 +1522,6 @@ stock int GiveWeapon(int client, const char[] szClassName, int iReserveAmmo, int
 	{
 		return -1;
 	}
-
 
 	int iWeaponTeam = GetWeaponTeamByClassName(szClassName);
 	int iWeaponDefIndex = GetWeaponDefIndexByClassName(szClassName);
@@ -2887,8 +2885,6 @@ public bool IsStickerInSet(int iStickerSetNum, int iStickerNum)
 
 	/*		Agents		*/
 
-
-
 public int GetAgentNumByDefIndex(int iDefIndex)
 {
 	int iIndex = g_arAgentsNum.FindValue(iDefIndex);
@@ -2961,7 +2957,6 @@ public bool GetAgentPlayerModelByAgentNum(int iAgentNum, char[] szPlayerModel, i
 	strcopy(szPlayerModel, iLen, AgentInfo.PlayerModel);
 	return true;
 }
-
 
 public int GetAgentTeamByDefIndex(int iDefIndex)
 {

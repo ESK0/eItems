@@ -73,7 +73,7 @@ public void CreateNatives()
 	CreateNative("eItems_GetWeaponDisplayNameByClassName", Native_GetWeaponDisplayNameByClassName);
 	CreateNative("eItems_GetWeaponDisplayNameByWeapon", Native_GetWeaponDisplayNameByWeapon);
 
-   //ViewModels
+	//ViewModels
 	CreateNative("eItems_GetWeaponViewModelByWeaponNum", Native_GetWeaponViewModelByWeaponNum);
 	CreateNative("eItems_GetWeaponViewModelByDefIndex", Native_GetWeaponViewModelByDefIndex);
 	CreateNative("eItems_GetWeaponViewModelByWeapon", Native_GetWeaponViewModelByWeapon);
@@ -203,7 +203,7 @@ public void CreateNatives()
 
 	CreateNative("eItems_IsCoinInSet", Native_IsCoinInSet);
 
-	/*				Stickers			*/
+	/*				Stickers			 */
 
 	CreateNative("eItems_GetStickerSetIdByStickerSetNum", Native_GetStickerSetIdByStickerSetNum);
 	CreateNative("eItems_GetStickerSetNumByStickerSetId", Native_GetStickerSetNumByStickerSetId);
