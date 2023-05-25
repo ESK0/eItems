@@ -850,7 +850,7 @@ public void ParseSprays(JSONObject array)
 		jSpray.GetString("item_name", szDisplayName, sizeof(szDisplayName));
 		jSpray.GetString("material", szMaterialPath, sizeof(szMaterialPath));
 
-		Format(szMaterialPath, sizeof(szMaterialPath), "decals/sprays/%s", szMaterialPath)
+		Format(szMaterialPath, sizeof(szMaterialPath), "decals/sprays/%s", szMaterialPath);
 
 		IntToString(iDefIndex, szSprayDefIndex, sizeof(szSprayDefIndex));
 
