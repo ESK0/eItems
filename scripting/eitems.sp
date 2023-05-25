@@ -8,7 +8,7 @@
 #pragma semicolon 1
 
 #define TAG_NCLR "[eItems]"
-#define AUTHOR "ESK0, modded by corrreia"
+#define AUTHOR "ESK0 (Modded by corrreia & crashzk)"
 #define VERSION "0.20.3"
 
 #include "files/globals.sp"
