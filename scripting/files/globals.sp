@@ -5,165 +5,164 @@ HTTPRequest httpRequest;
 
 enum struct eWearRemap
 {
-    float Min;
-    float Max;
+	float Min;
+	float Max;
 }
 
 enum struct eSkinInfo
 {
-    int SkinNum;
-    char DisplayName[64];
-    bool GloveApplicable;
-    int SkinRarity;
-    char RarityName[48];
-    eWearRemap WearRemap;
+	int SkinNum;
+	char DisplayName[64];
+	bool GloveApplicable;
+	int SkinRarity;
+	char RarityName[48];
+	eWearRemap WearRemap;
 }
 
 enum struct eGlovesInfo
 {
-    int GloveNum;
-    char DisplayName[64];
-    char ViewModel[PLATFORM_MAX_PATH];
-    char WorldModel[PLATFORM_MAX_PATH];
-    ArrayList Paints;
+	int GloveNum;
+	char DisplayName[64];
+	char ViewModel[PLATFORM_MAX_PATH];
+	char WorldModel[PLATFORM_MAX_PATH];
+	ArrayList Paints;
 }
 
 enum struct eMusicKitsInfo
 {
-    int MusicKitNum;
-    char DisplayName[64];
+	int MusicKitNum;
+	char DisplayName[64];
 }
 
 enum struct ePinInfo
 {
-    int PinNum;
-    char DisplayName[64];
+	int PinNum;
+	char DisplayName[64];
 }
-
 
 enum struct eCoinsSets
 {
-    int CoinSetNum;
-    char DisplayName[64];
-    ArrayList Coins;
+	int CoinSetNum;
+	char DisplayName[64];
+	ArrayList Coins;
 }
 
 enum struct eCoinInfo
 {
-    int CoinNum;
-    char DisplayName[64];
+	int CoinNum;
+	char DisplayName[64];
 }
 
 enum struct eStickersSets
 {
-    int StickerSetNum;
-    char DisplayName[64];
-    ArrayList Stickers;
+	int StickerSetNum;
+	char DisplayName[64];
+	ArrayList Stickers;
 }
 
 enum struct eStickerInfo
 {
-    int StickerNum;
-    char DisplayName[64];
+	int StickerNum;
+	char DisplayName[64];
 }
 
 enum struct eAgentInfo
 {
-    int AgentNum;
-    int Team;
-    char DisplayName[64];
-    char PlayerModel[PLATFORM_MAX_PATH];
-    char VOPrefix[64];
+	int AgentNum;
+	int Team;
+	char DisplayName[64];
+	char PlayerModel[PLATFORM_MAX_PATH];
+	char VOPrefix[64];
 }
 
 enum struct ePatchInfo
 {
-    int PatchNum;
-    char DisplayName[64];
+	int PatchNum;
+	char DisplayName[64];
 }
 
 enum struct eCrateInfo
 {
-    int CrateNum;
-    int ItemsCount;
-    ArrayList Items;
-    char DisplayName[64];  
-    char WorldModel[PLATFORM_MAX_PATH];
+	int CrateNum;
+	int ItemsCount;
+	ArrayList Items;
+	char DisplayName[64];
+	char WorldModel[PLATFORM_MAX_PATH];
 }
 
 enum struct eCrateItem
 {
-    int WeaponDefIndex;
-    int SkinDefIndex;
+	int WeaponDefIndex;
+	int SkinDefIndex;
 }
 
 enum struct eSpraysSets
 {
-    int SpraySetNum;
-    char DisplayName[64];
-    ArrayList Sprays;
+	int SpraySetNum;
+	char DisplayName[64];
+	ArrayList Sprays;
 }
 
 enum struct eSprayInfo
 {
-    int SprayNum;
-    char DisplayName[64];
-    char MaterialPath[PLATFORM_MAX_PATH];
+	int SprayNum;
+	char DisplayName[64];
+	char MaterialPath[PLATFORM_MAX_PATH];
 }
 
 enum struct eWeaponInfo
 {
-    int WeaponNum;
-    char DisplayName[64];
-    char ClassName[48];
-    char ViewModel[PLATFORM_MAX_PATH];
-    char WorldModel[PLATFORM_MAX_PATH];
-    ArrayList Paints;
-    int Team;
-    int Slot;
-    int ClipAmmo;
-    int StickerSlotsCount;
-    int ReserveAmmo;
-    int MaxPlayerSpeed;
-    int Price;
-    float CycleTime;
-    float Spread;
-    int Damage;
-    int FullAuto;
-    bool HasRareInspect;
-    bool HasRareDraw;
-    int RareInspect;
-    int RareDraw;
+	int WeaponNum;
+	char DisplayName[64];
+	char ClassName[48];
+	char ViewModel[PLATFORM_MAX_PATH];
+	char WorldModel[PLATFORM_MAX_PATH];
+	ArrayList Paints;
+	int Team;
+	int Slot;
+	int ClipAmmo;
+	int StickerSlotsCount;
+	int ReserveAmmo;
+	int MaxPlayerSpeed;
+	int Price;
+	float CycleTime;
+	float Spread;
+	int Damage;
+	int FullAuto;
+	bool HasRareInspect;
+	bool HasRareDraw;
+	int RareInspect;
+	int RareDraw;
 }
 
 enum struct eClientInfo
 {
-    bool GivingWeapon;
+	bool GivingWeapon;
 
-    void Reset()
-    {
-        this.GivingWeapon = false;
-    }  
+	void Reset()
+	{
+		this.GivingWeapon = false;
+	}
 }
 
 eClientInfo ClientInfo[MAXPLAYERS + 1];
 
-StringMap g_smSkinInfo = null;          // SkinDefIndex:[SkinInfo]        (SkinDefIndex is a string, SkinInfo is a struct) ([]is always a arraylist)
-ArrayList g_arSkinsNum = null;          // position is SkinNum, value is SkinDefIndex
+StringMap g_smSkinInfo = null;			// SkinDefIndex:[SkinInfo]		  (SkinDefIndex is a string, SkinInfo is a struct) ([]is always a arraylist)
+ArrayList g_arSkinsNum = null;			// position is SkinNum, value is SkinDefIndex
 
-StringMap g_smWeaponPaints = null;      // WeaponDefIndex:[PaintDefIndex]   (WeaponDefIndex is a string, PaintDefIndex is an int)
-StringMap g_smWeaponInfo = null;        // WeaponDefIndex:[WeaponInfo]    (WeaponDefIndex is a string, WeaponInfo is a struct)
-ArrayList g_arWeaponsNum = null;        // position is WeaponNum, value is WeaponDefIndex
+StringMap g_smWeaponPaints = null;		// WeaponDefIndex:[PaintDefIndex]	(WeaponDefIndex is a string, PaintDefIndex is an int)
+StringMap g_smWeaponInfo = null;		// WeaponDefIndex:[WeaponInfo]	  (WeaponDefIndex is a string, WeaponInfo is a struct)
+ArrayList g_arWeaponsNum = null;		// position is WeaponNum, value is WeaponDefIndex
 
-StringMap g_smGlovePaints = null;       // GloveDefIndex:[PaintDefIndex]   (GloveDefIndex is a string, PaintDefIndex is an int)
-StringMap g_smGloveInfo = null;         // GloveDefIndex:[GloveInfo]    (GloveDefIndex is a string, GloveInfo is a struct)
-ArrayList g_arGlovesNum = null;         // position is GloveNum, value is GloveDefIndex
+StringMap g_smGlovePaints = null;		// GloveDefIndex:[PaintDefIndex]   (GloveDefIndex is a string, PaintDefIndex is an int)
+StringMap g_smGloveInfo = null;			// GloveDefIndex:[GloveInfo]	(GloveDefIndex is a string, GloveInfo is a struct)
+ArrayList g_arGlovesNum = null;			// position is GloveNum, value is GloveDefIndex
 
-ArrayList g_arMusicKitsNum = null;      // position is MusicKitNum, value is MusicKitDefIndex
-StringMap g_smMusicKitInfo = null;      // MusicKitDefIndex:[MusicKitInfo]    (MusicKitDefIndex is a string, MusicKitInfo is a struct)
+ArrayList g_arMusicKitsNum = null;		// position is MusicKitNum, value is MusicKitDefIndex
+StringMap g_smMusicKitInfo = null;		// MusicKitDefIndex:[MusicKitInfo]	  (MusicKitDefIndex is a string, MusicKitInfo is a struct)
 
-ArrayList g_arPinsNum = null;           // position is PinNum, value is PinDefIndex
-StringMap g_smPinInfo = null;           // PinDefIndex:[PinInfo]    (PinDefIndex is a string, PinInfo is a struct)
+ArrayList g_arPinsNum = null;			// position is PinNum, value is PinDefIndex
+StringMap g_smPinInfo = null;			// PinDefIndex:[PinInfo]	(PinDefIndex is a string, PinInfo is a struct)
 
 ArrayList g_arCoinsSetsNum = null;
 ArrayList g_arCoinsNum = null;
@@ -212,7 +211,6 @@ bool g_bIsRoundEnd = false;
 bool g_bUseLocal = false;
 bool g_bForceDisableHibernation = false;
 bool g_bDownloadSprays = false;
-
 
 bool g_bIsStickerInSet[200][8000];
 bool g_bIsSprayInSet[200][1000];

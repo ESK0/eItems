@@ -1,22 +1,17 @@
-## **eItems**
+# eItems
 eItems is an API designed to provide extended information and functionality to the CSGO Item Economy.
 
-I modified the original plugin to have some extra features, such as getting the avaliable skins for a weapon/glove.
-
-**Dependencies:**
-
+## Dependencies:
 - [**REST in Pawn** - HTTP client for JSON REST APIs](https://forums.alliedmods.net/showthread.php?t=298024) - ver. 1.3.0+
 
-**Instalation:**
-
+## Instalation:
 1. Upload configs and eitems.smx to your server.
 2. Change language in eItems.json if needed.
 3. Upload selected language data file to your server. ***(Only if UseLocal is set to true in config)***
 4. Restart your server or load plugin manually.
-5. Upload Graffiti files to server + fastdl. ***(Only if DownloadSprays is set to true in config, skip otherwise)***
+5. Upload Graffiti files to server + fastdl. ***(Only if DownloadSprays is set to `true` in config, skip otherwise)***
 
-**Troubleshooting:**
-
+### Troubleshooting:
 ```
 [SM] Exception reported: Invalid JSON in line
 ```
@@ -32,7 +27,7 @@ eItems.smx (eItems): unexpected error 23 in AskPluginLoad callback
 ```
 - Make sure you do not have multiple copies of eitems.smx in plugins folder.
 
-**Natives:**
+## Natives:
 ```
 enum WearRemap
 {
@@ -333,16 +328,12 @@ native bool     eItems_IsSprayInSet(int iSpraySetNum, int iSprayNum);
 
 /*              Other             */
 
-//weapon skins
+// Weapon Skins
 native int    eItems_GetSkinsDefIndexArrByWeaponNum(int iWeaponNum, ArrayList &arSkins);
 native int    eItems_GetSkinsDefIndexArrByWeaponDefIndex(int iWeaponDefIndex, ArrayList &arSkins);
 native int    eItems_GetSkinsDefIndexArrByWeaponClassName(char[] szClassName, ArrayList &arSkins);
 
-//glove skins
+// Glove Skins
 native int    eItems_GetSkinsDefIndexArrByGloveNum(int iGloveNum, ArrayList &arSkins);
 native int    eItems_GetSkinsDefIndexArrByGloveDefIndex(int iGloveDefIndex, ArrayList &arSkins);
 ```
-
-I added the last 5 natives, they are usefull to get compatible skins for a weapon/glove.
-
-The plugin is compatible with the original eItems plugin, so you can replace it without any problems.

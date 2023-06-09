@@ -375,11 +375,11 @@ native bool     eItems_IsSprayInSet(int iSpraySetNum, int iSprayNum);
 
 /*              Other             */
 
-//weapon skins
+// Weapon Skins
 native int    eItems_GetSkinsDefIndexArrByWeaponNum(int iWeaponNum, ArrayList &arSkins);
 native int    eItems_GetSkinsDefIndexArrByWeaponDefIndex(int iWeaponDefIndex, ArrayList &arSkins);
 native int    eItems_GetSkinsDefIndexArrByWeaponClassName(char[] szClassName, ArrayList &arSkins);
 
-//glove skins
+// Glove Skins
 native int    eItems_GetSkinsDefIndexArrByGloveNum(int iGloveNum, ArrayList &arSkins);
 native int    eItems_GetSkinsDefIndexArrByGloveDefIndex(int iGloveDefIndex, ArrayList &arSkins);
